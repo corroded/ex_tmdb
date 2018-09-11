@@ -4,15 +4,15 @@ defmodule ExTmdb do
   """
 
   @doc """
-  Hello world.
+  Prints out the current project version
 
   ## Examples
 
-      iex> ExTmdb.hello
-      :world
+      iex> ExTmdb.version()
+      "0.1.0"
 
   """
-  def hello do
-    :world
+  def version do
+    Mix.Project.config[:version]
   end
 end

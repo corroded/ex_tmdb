@@ -2,7 +2,7 @@ defmodule ExTmdbTest do
   use ExUnit.Case
   doctest ExTmdb
 
-  test "greets the world" do
-    assert ExTmdb.hello() == :world
+  test "returns the correct version" do
+    assert ExTmdb.version() == "0.1.0"
   end
 end
