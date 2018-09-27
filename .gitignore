@@ -23,3 +23,5 @@ erl_crash.dump
 ex_tmdb-*.tar
 
 config/*.secret.exs
+config/dev.exs
+config/prod.exs
