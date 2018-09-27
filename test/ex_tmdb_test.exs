@@ -7,6 +7,6 @@ defmodule ExTmdbTest do
   end
 
   test "returns the correct api endpoint (defaults to V3)" do
-    assert ExTmdb.endpoint_url() == "https://api.themoviedb.org/3"
+    assert ExTmdb.endpoint_url() == "http://localhost:1234/3"
   end
 end

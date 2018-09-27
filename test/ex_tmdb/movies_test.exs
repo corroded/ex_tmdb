@@ -1,6 +1,5 @@
 defmodule ExTmdb.MoviesTest do
   use ExUnit.Case
-  import ExTmdb.Movies
 
   @mock_response %{
     "dates" => %{"maximum" => "2018-09-21", "minimum" => "2018-08-04"},
@@ -45,17 +44,18 @@ defmodule ExTmdb.MoviesTest do
   @mock_json_response Poison.encode!(@mock_response)
 
   setup do
-    bypass = Bypass.open
+    bypass = Bypass.open(port: 1234)
     {:ok, bypass: bypass}
   end
 
   test "now_playing/0", %{bypass: bypass} do
-    Bypass.expect_once bypass, "GET", "/now_playing", fn conn ->
+    Bypass.expect bypass, "GET", "/3/movie/now_playing", fn conn ->
+      assert "GET" == conn.method
+      assert "/3/movie/now_playing" == conn.request_path
       Plug.Conn.resp(conn, 200, @mock_json_response)
     end
 
-    {:ok, movies} = ExTmdb.Movies.now_playing
-    assert movies == @mock_response
+    assert @mock_response == ExTmdb.Movies.now_playing
   end
 
   # test "client can handle an error response", %{bypass: bypass} do
@@ -73,4 +73,3 @@ defmodule ExTmdb.MoviesTest do
 
   # defp endpoint_url(port), do: "http://localhost:#{port}/"
 end
-

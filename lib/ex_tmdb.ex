@@ -23,10 +23,10 @@ defmodule ExTmdb do
   ## Examples
 
       iex> ExTmdb.endpoint_url()
-      "https://api.themoviedb.org/3"
+      "http://localhost:1234/3"
 
       iex> ExTmdb.endpoint_url(4)
-      "https://api.themoviedb.org/4"
+      "http://localhost:1234/4"
   """
   @spec endpoint_url(String.t) :: String.t
   def endpoint_url(version \\ 3) do
