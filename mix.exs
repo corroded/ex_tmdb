@@ -9,7 +9,8 @@ defmodule ExTmdb.MixProject do
       start_permanent: Mix.env() == :prod,
       description: description(),
       package: package(),
-      deps: deps()
+      deps: deps(),
+      source_url: "https://github.com/corroded/ex_tmdb"
     ]
   end
 
